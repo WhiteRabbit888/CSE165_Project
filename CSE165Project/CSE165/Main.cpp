@@ -1,11 +1,16 @@
 #include <iostream>
 
 // GLEW
-#define GLEW_STATIC
-#include <GL/glew.h>
+//#define GLEW_STATIC
+//#include <GL/glew.h>
+
+//GLAD
+#include <glad/glad.h>
 
 // GLFW
 #include <GLFW/glfw3.h>
+
+#include "Renderer.h"
 
 // Window dimensions
 const GLuint WIDTH = 800, HEIGHT = 600;
@@ -54,14 +59,20 @@ int main()
 
     glfwMakeContextCurrent(window);
 
-    // Set this to true so GLEW knows to use a modern approach to retrieving function pointers and extensions
-    glewExperimental = GL_TRUE;
-    // Initialize GLEW to setup the OpenGL Function pointers
-    if (GLEW_OK != glewInit())
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
-        std::cout << "Failed to initialize GLEW" << std::endl;
-        return EXIT_FAILURE;
+        std::cout << "Failed to initialize GLAD" << std::endl;
+        return -1;
     }
+
+    // Set this to true so GLEW knows to use a modern approach to retrieving function pointers and extensions
+   // glewExperimental = GL_TRUE;
+    // Initialize GLEW to setup the OpenGL Function pointers
+    //if (GLEW_OK != glewInit())
+   // {
+    //    std::cout << "Failed to initialize GLEW" << std::endl;
+        //return EXIT_FAILURE;
+    //}
 
     // Define the viewport dimensions
     glViewport(0, 0, screenWidth, screenHeight);

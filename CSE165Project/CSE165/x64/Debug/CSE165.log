@@ -1,2 +1,17 @@
-﻿  Main.cpp
-C:\CSE165Project\CSE165\Main.cpp(5,10): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+﻿  IndexBuffer.cpp
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\VertexBufferLayout.h(19,3): error C3861: 'ASSERT': identifier not found
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\Renderer.h(20,58): error C2061: syntax error: identifier 'Shader'
+  Renderer.cpp
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\VertexBufferLayout.h(19,3): error C3861: 'ASSERT': identifier not found
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\Renderer.h(20,52): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\Renderer.h(20,52): error C2143: syntax error: missing ',' before '&'
+  Shader.cpp
+  VertexArray.cpp
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\Renderer.h(20,32): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\Renderer.h(20,32): error C2143: syntax error: missing ',' before '&'
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\VertexArray.cpp(24,3): warning C4312: 'type cast': conversion from 'unsigned int' to 'const void *' of greater size
+  VertexBuffer.cpp
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\VertexBufferLayout.h(19,3): error C3861: 'ASSERT': identifier not found
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\Renderer.h(20,52): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\Renderer.h(20,52): error C2143: syntax error: missing ',' before '&'
+  Generating Code...

@@ -21,5 +21,125 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SOIL2\SOIL2\image_DXT.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SOIL2\SOIL2\image_helper.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SOIL2\SOIL2\SOIL2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SOIL2\SOIL2\wfETC.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\IndexBuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VertexArray.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VertexBuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="libraries\include\GLFW\glfw3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libraries\include\GLFW\glfw3native.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libraries\include\KHR\khrplatform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libraries\include\glad\glad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SOIL2\SOIL2\image_DXT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SOIL2\SOIL2\image_helper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SOIL2\SOIL2\jo_jpeg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SOIL2\SOIL2\pkm_helper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SOIL2\SOIL2\pvr_helper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SOIL2\SOIL2\SOIL2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SOIL2\SOIL2\stb_image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SOIL2\SOIL2\stb_image_write.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SOIL2\SOIL2\stbi_DDS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SOIL2\SOIL2\stbi_DDS_c.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SOIL2\SOIL2\stbi_ext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SOIL2\SOIL2\stbi_ext_c.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SOIL2\SOIL2\stbi_pkm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SOIL2\SOIL2\stbi_pkm_c.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SOIL2\SOIL2\stbi_pvr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SOIL2\SOIL2\stbi_pvr_c.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SOIL2\SOIL2\wfETC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\IndexBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\VertexArray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\VertexBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\VertexBufferLayout.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="libraries\lib\glfw3.lib" />
+    <Library Include="libraries\lib\soil2-debug.lib" />
   </ItemGroup>
 </Project>
