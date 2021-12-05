@@ -11,9 +11,12 @@
 #include <GLFW/glfw3.h>
 
 #include "Renderer.h"
+#include "Game.h"
 
 // Window dimensions
 const GLuint WIDTH = 800, HEIGHT = 600;
+
+Game Dino(WIDTH, HEIGHT);
 
 // Shaders
 const GLchar* vertexShaderSource = "#version 330 core\n"
@@ -28,6 +31,8 @@ const GLchar* fragmentShaderSource = "#version 330 core\n"
 "{\n"
 "color = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
 "}\n\0";
+
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
 
 // The MAIN function, from here we start the application and run the game loop
 int main()
@@ -44,7 +49,7 @@ int main()
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
     // Create a GLFWwindow object that we can use for GLFW's functions
-    GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "LearnOpenGL", nullptr, nullptr);
+    GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Dino game", nullptr, nullptr);
 
     int screenWidth, screenHeight;
     glfwGetFramebufferSize(window, &screenWidth, &screenHeight);
@@ -64,6 +69,8 @@ int main()
         std::cout << "Failed to initialize GLAD" << std::endl;
         return -1;
     }
+
+    glfwSetKeyCallback(window, key_callback);
 
     // Set this to true so GLEW knows to use a modern approach to retrieving function pointers and extensions
    // glewExperimental = GL_TRUE;
@@ -181,4 +188,13 @@ int main()
     glfwTerminate();
 
     return EXIT_SUCCESS;
+}
+
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
+{
+    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+        glfwSetWindowShouldClose(window, true);
+
+    if (key == GLFW_KEY_SPACE && action == GLFW_PRESS)
+        Dino.Keys[key] = true;
 }

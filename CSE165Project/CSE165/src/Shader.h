@@ -8,11 +8,11 @@
 
 class Shader
 {
+public:
     // the program ID
     unsigned int ID;
     std::unordered_map<std::string, int> uniformLocationCache;
 
-public:
     // constructor reads and builds the shader
     Shader(const char* vertexPath, const char* fragmentPath);
     ~Shader();

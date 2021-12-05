@@ -1,17 +1,110 @@
-﻿  IndexBuffer.cpp
-C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\VertexBufferLayout.h(19,3): error C3861: 'ASSERT': identifier not found
-C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\Renderer.h(20,58): error C2061: syntax error: identifier 'Shader'
+﻿  Game.cpp
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\Game.cpp(14,2): error C2059: syntax error: '}'
+  Main.cpp
+  GameObject.cpp
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.h(9,5): error C2653: 'glm': is not a class or namespace name
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.h(9,17): error C3646: 'Position': unknown override specifier
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.h(9,25): error C2059: syntax error: ','
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.h(9,41): error C2238: unexpected token(s) preceding ';'
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.h(10,5): error C2653: 'glm': is not a class or namespace name
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.h(10,17): error C3646: 'Color': unknown override specifier
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.h(10,22): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.h(18,16): error C2653: 'glm': is not a class or namespace name
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.h(18,21): error C2061: syntax error: identifier 'vec2'
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.h(18,15): error C2535: 'GameObject::GameObject(void)': member function already defined or declared
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.h(17): message : see declaration of 'GameObject::GameObject'
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.cpp(6,7): error C2614: 'GameObject': illegal member initialization: 'Position' is not a base or member
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.cpp(6,29): error C2614: 'GameObject': illegal member initialization: 'Size' is not a base or member
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.cpp(6,47): error C2614: 'GameObject': illegal member initialization: 'Velocity' is not a base or member
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.cpp(6,63): error C2614: 'GameObject': illegal member initialization: 'Color' is not a base or member
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.cpp(8,24): error C2653: 'glm': is not a class or namespace name
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.cpp(8,13): error C7550: 'GameObject::{ctor}': the qualified name in this context names a constructor, not a type
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.cpp(8,29): error C2065: 'vec2': undeclared identifier
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.cpp(8,34): error C2146: syntax error: missing ')' before identifier 'pos'
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.cpp(8,39): error C2653: 'glm': is not a class or namespace name
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.cpp(8,73): error C2653: 'glm': is not a class or namespace name
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.cpp(8,90): error C2653: 'glm': is not a class or namespace name
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.cpp(9,19): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.cpp(9,16): error C2065: 'pos': undeclared identifier
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.cpp(9,31): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.cpp(9,27): error C2065: 'size': undeclared identifier
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.cpp(9,51): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.cpp(9,43): error C2065: 'velocity': undeclared identifier
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.cpp(9,65): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.cpp(9,60): error C2065: 'color': undeclared identifier
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.cpp(9,81): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.cpp(9,75): error C2065: 'sprite': undeclared identifier
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.cpp(9,83): error C2059: syntax error: '{'
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.cpp(9,83): error C2143: syntax error: missing ';' before '{'
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.cpp(9,83): error C2447: '{': missing function header (old-style formal list?)
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.cpp(13,39): error C2039: 'Position': is not a member of 'GameObject'
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.h(4): message : see declaration of 'GameObject'
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.cpp(13,55): error C2039: 'Size': is not a member of 'GameObject'
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.h(4): message : see declaration of 'GameObject'
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.cpp(13,67): error C2039: 'Color': is not a member of 'GameObject'
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.h(4): message : see declaration of 'GameObject'
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\GameObject.cpp(13,72): error C2660: 'Renderer::Draw': function does not take 1 arguments
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\Renderer.h(26,10): message : see declaration of 'Renderer::Draw'
+  IndexBuffer.cpp
   Renderer.cpp
-C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\VertexBufferLayout.h(19,3): error C3861: 'ASSERT': identifier not found
-C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\Renderer.h(20,52): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\Renderer.h(20,52): error C2143: syntax error: missing ',' before '&'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\utility(268,68): error C2512: 'Shader::Shader': no appropriate default constructor available
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\utility(272): message : see reference to function template instantiation 'std::pair<const std::string,Shader>::pair<std::tuple<const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &>,std::tuple<>,0,>(_Tuple1 &,_Tuple2 &,std::integer_sequence<size_t,0>,std::integer_sequence<size_t>)' being compiled
+          with
+          [
+              _Tuple1=std::tuple<const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &>,
+              _Tuple2=std::tuple<>
+          ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\utility(272): message : see reference to function template instantiation 'std::pair<const std::string,Shader>::pair<std::tuple<const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &>,std::tuple<>,0,>(_Tuple1 &,_Tuple2 &,std::integer_sequence<size_t,0>,std::integer_sequence<size_t>)' being compiled
+          with
+          [
+              _Tuple1=std::tuple<const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &>,
+              _Tuple2=std::tuple<>
+          ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\xmemory(674): message : see reference to function template instantiation 'std::pair<const std::string,Shader>::pair<const std::basic_string<char,std::char_traits<char>,std::allocator<char>>&,>(std::piecewise_construct_t,std::tuple<const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &>,std::tuple<>)' being compiled
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\xmemory(681): message : see reference to function template instantiation 'std::pair<const std::string,Shader>::pair<const std::basic_string<char,std::char_traits<char>,std::allocator<char>>&,>(std::piecewise_construct_t,std::tuple<const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &>,std::tuple<>)' being compiled
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\xtree(804): message : see reference to function template instantiation 'void std::_Default_allocator_traits<_Alloc>::construct<_Ty,const std::piecewise_construct_t&,std::tuple<const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &>,std::tuple<>>(_Alloc &,_Objty *const ,const std::piecewise_construct_t &,std::tuple<const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &> &&,std::tuple<> &&)' being compiled
+          with
+          [
+              _Alloc=std::allocator<std::_Tree_node<std::pair<const std::string,Shader>,std::_Default_allocator_traits<std::allocator<std::pair<const std::string,Shader>>>::void_pointer>>,
+              _Ty=std::pair<const std::string,Shader>,
+              _Objty=std::pair<const std::string,Shader>
+          ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\xtree(805): message : see reference to function template instantiation 'void std::_Default_allocator_traits<_Alloc>::construct<_Ty,const std::piecewise_construct_t&,std::tuple<const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &>,std::tuple<>>(_Alloc &,_Objty *const ,const std::piecewise_construct_t &,std::tuple<const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &> &&,std::tuple<> &&)' being compiled
+          with
+          [
+              _Alloc=std::allocator<std::_Tree_node<std::pair<const std::string,Shader>,std::_Default_allocator_traits<std::allocator<std::pair<const std::string,Shader>>>::void_pointer>>,
+              _Ty=std::pair<const std::string,Shader>,
+              _Objty=std::pair<const std::string,Shader>
+          ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\map(173): message : see reference to function template instantiation 'std::_Tree_temp_node<std::allocator<std::_Tree_node<std::pair<const std::string,Shader>,std::_Default_allocator_traits<_Alloc>::void_pointer>>>::_Tree_temp_node<const std::piecewise_construct_t&,std::tuple<const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &>,std::tuple<>>(_Alnode &,std::_Tree_node<std::pair<const std::string,Shader>,std::_Default_allocator_traits<_Alloc>::void_pointer> *,const std::piecewise_construct_t &,std::tuple<const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &> &&,std::tuple<> &&)' being compiled
+          with
+          [
+              _Alloc=std::allocator<std::pair<const std::string,Shader>>,
+              _Alnode=std::allocator<std::_Tree_node<std::pair<const std::string,Shader>,std::_Default_allocator_traits<std::allocator<std::pair<const std::string,Shader>>>::void_pointer>>
+          ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\map(182): message : see reference to function template instantiation 'std::_Tree_temp_node<std::allocator<std::_Tree_node<std::pair<const std::string,Shader>,std::_Default_allocator_traits<_Alloc>::void_pointer>>>::_Tree_temp_node<const std::piecewise_construct_t&,std::tuple<const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &>,std::tuple<>>(_Alnode &,std::_Tree_node<std::pair<const std::string,Shader>,std::_Default_allocator_traits<_Alloc>::void_pointer> *,const std::piecewise_construct_t &,std::tuple<const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &> &&,std::tuple<> &&)' being compiled
+          with
+          [
+              _Alloc=std::allocator<std::pair<const std::string,Shader>>,
+              _Alnode=std::allocator<std::_Tree_node<std::pair<const std::string,Shader>,std::_Default_allocator_traits<std::allocator<std::pair<const std::string,Shader>>>::void_pointer>>
+          ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\map(323): message : see reference to function template instantiation 'std::pair<std::_Tree_node<std::pair<const std::string,Shader>,std::_Default_allocator_traits<_Alloc>::void_pointer> *,bool> std::map<std::string,Shader,std::less<std::string>,_Alloc>::_Try_emplace<const std::basic_string<char,std::char_traits<char>,std::allocator<char>>&,>(_Keyty)' being compiled
+          with
+          [
+              _Alloc=std::allocator<std::pair<const std::string,Shader>>,
+              _Keyty=const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &
+          ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\map(323): message : see reference to function template instantiation 'std::pair<std::_Tree_node<std::pair<const std::string,Shader>,std::_Default_allocator_traits<_Alloc>::void_pointer> *,bool> std::map<std::string,Shader,std::less<std::string>,_Alloc>::_Try_emplace<const std::basic_string<char,std::char_traits<char>,std::allocator<char>>&,>(_Keyty)' being compiled
+          with
+          [
+              _Alloc=std::allocator<std::pair<const std::string,Shader>>,
+              _Keyty=const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &
+          ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\map(322): message : while compiling class template member function 'Shader &std::map<std::string,Shader,std::less<std::string>,std::allocator<std::pair<const std::string,Shader>>>::operator [](const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &)'
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\Renderer.cpp(41): message : see reference to function template instantiation 'Shader &std::map<std::string,Shader,std::less<std::string>,std::allocator<std::pair<const std::string,Shader>>>::operator [](const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &)' being compiled
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\Renderer.cpp(41): message : see reference to class template instantiation 'std::map<std::string,Shader,std::less<std::string>,std::allocator<std::pair<const std::string,Shader>>>' being compiled
   Shader.cpp
   VertexArray.cpp
-C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\Renderer.h(20,32): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\Renderer.h(20,32): error C2143: syntax error: missing ',' before '&'
-C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\VertexArray.cpp(24,3): warning C4312: 'type cast': conversion from 'unsigned int' to 'const void *' of greater size
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\VertexArray.cpp(25,3): warning C4312: 'type cast': conversion from 'unsigned int' to 'const void *' of greater size
   VertexBuffer.cpp
-C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\VertexBufferLayout.h(19,3): error C3861: 'ASSERT': identifier not found
-C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\Renderer.h(20,52): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\src\Renderer.h(20,52): error C2143: syntax error: missing ',' before '&'
   Generating Code...
