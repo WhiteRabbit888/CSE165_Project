@@ -1,5 +1,4 @@
 #include "Renderer.h"
-#include "Texture.h"
 
 class GameObject
 {

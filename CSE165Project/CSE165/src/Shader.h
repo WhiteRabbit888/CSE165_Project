@@ -1,8 +1,8 @@
 #include <glad/glad.h> // include glad to get all the required OpenGL headers
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 #include <string>
-#include <fstream>
-#include <sstream>
 #include <iostream>
 #include <unordered_map>
 
@@ -14,12 +14,18 @@ public:
     std::unordered_map<std::string, int> uniformLocationCache;
 
     // constructor reads and builds the shader
-    Shader(const char* vertexPath, const char* fragmentPath);
+    Shader() {}
     ~Shader();
     // use/activate the shader
-    void Bind();
+    Shader &Bind();
     void Unbind();
 
-    void setUniform4f(const std::string& name, float v0, float v1, float f1, float f2);
-    unsigned int getUniformLocation(const std::string& name);
+    void Compile(const char* vertexSource, const char* fragmentSource);
+    void SetInteger(const char* name, int value, bool use = false);
+    void setUniform4f(const char* name, glm::vec4 val, bool use = false);
+    void setUniform3f(const char* name, glm::vec3 val, bool use = false);
+    void setUniform2f(const char* name, glm::vec2 val, bool use = false);
+    void SetMatrix4(const char* name, const glm::mat4& matrix, bool use = false);
+    void checkCompileErrors(unsigned int object, std::string type);
+    //unsigned int getUniformLocation(const char* name);
 };
