@@ -18,7 +18,7 @@ public:
     Game(unsigned int width, unsigned int height);
     ~Game();
     // initialize game state (load all shaders/textures/levels)
-    void Init();
+    //void Init();
     // game loop
     void ProcessInput(float dt);
     void Update(float dt);

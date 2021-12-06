@@ -60,10 +60,11 @@ int main(int argc, char* argv[])
     glViewport(0, 0, WIDTH, HEIGHT);
 
     glEnable(GL_BLEND);
+    glEnable(GL_TEXTURE_2D);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     //initializing our game
-    Dino.Init();
+    //Dino.Init();
 
     // Game loop
     while (!glfwWindowShouldClose(window))
@@ -79,8 +80,6 @@ int main(int argc, char* argv[])
         // Swap the screen buffers
         glfwSwapBuffers(window);
     }
-
-    ResourceManager::Clear();
 
     // Terminate GLFW, clearing any resources allocated by GLFW.
     glfwTerminate();

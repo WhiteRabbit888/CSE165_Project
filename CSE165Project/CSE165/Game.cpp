@@ -1,29 +1,14 @@
 #include "Game.h"
-#include "GameObject.h"
+#include <SOIL2.h>
 
 Renderer *renderer;
-GameObject *Player;
+//GameObject *Player;
 
 Game::Game(unsigned int width, unsigned int height) : State(GAME_ACTIVE), Keys(), Width(width), Height(height) {}
 
 Game::~Game()
 {
 	delete renderer;
-	delete Player;
-}
-
-void Game::Init()
-{
-	ResourceManager::LoadShader("res/shaders/sprite.vs", "res/shaders/sprite.frag", "sprite");
-	glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(Width),
-		static_cast<float>(Height), 0.0f, -1.0f, 1.0f);
-	ResourceManager::GetShader("sprite").Bind().SetInteger("image", 0);
-	ResourceManager::GetShader("sprite").SetMatrix4("projection", projection);
-
-	//Shader shader = ResourceManager::GetShader("sprite");
-	renderer = new Renderer(ResourceManager::GetShader("sprite"));
-
-	ResourceManager::LoadTexture("res/textures/cacodemon.png", true, "caco");
 }
 
 void Game::ProcessInput(float dt)
@@ -34,8 +19,38 @@ void Game::ProcessInput(float dt)
 	}
 }
 
+void Player()
+{
+	unsigned int VAO, VBO;
+	float positions[] = {
+		// pos      // tex
+		0.0f, 1.0f, 0.0f, 1.0f,
+		1.0f, 0.0f, 1.0f, 0.0f,
+		0.0f, 0.0f, 0.0f, 0.0f,
+
+		0.0f, 1.0f, 0.0f, 1.0f,
+		1.0f, 1.0f, 1.0f, 1.0f,
+		1.0f, 0.0f, 1.0f, 0.0f
+	};
+
+	glGenVertexArrays(1, &VAO);
+	glGenBuffers(1, &VBO);
+
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(positions), positions, GL_STATIC_DRAW);
+
+	glBindVertexArray(VAO);
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindVertexArray(0);
+
+	Shader pShader;
+	pShader.Compile("res/shaders/sprite.vs", "res/shaders/sprite.fs");
+	pShader.Bind();
+}
+
 void Game::Render()
 {
-	//Texture2D text = ResourceManager::GetTexture("caco");
-	renderer->Draw(ResourceManager::GetTexture("caco"), glm::vec2(200.0f, 200.0f), glm::vec2(300.0f, 400.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+	
 }
