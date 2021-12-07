@@ -4,14 +4,14 @@
 
 #include <string>
 #include <iostream>
-#include <unordered_map>
+//#include <unordered_map>
 
 class Shader
 {
 public:
     // the program ID
     unsigned int ID;
-    std::unordered_map<std::string, int> uniformLocationCache;
+    //std::unordered_map<std::string, int> uniformLocationCache;
 
     // constructor reads and builds the shader
     Shader() {}
@@ -21,10 +21,10 @@ public:
     void Unbind();
 
     void Compile(const char* vertexSource, const char* fragmentSource);
-    void SetInteger(const char* name, int value, bool use = false);
-    void setUniform4f(const char* name, glm::vec4 val, bool use = false);
-    void setUniform3f(const char* name, glm::vec3 val, bool use = false);
-    void setUniform2f(const char* name, glm::vec2 val, bool use = false);
-    void SetMatrix4(const char* name, const glm::mat4& matrix, bool use = false);
+    void SetInteger(const char* name, int value);
+    void setUniform4f(const char* name, glm::vec4 val);
+    void setUniform3f(const char* name, glm::vec3 val);
+    void setUniform2f(const char* name, glm::vec2 val);
+    void SetMatrix4(const char* name, const glm::mat4& matrix);
     void checkCompileErrors(unsigned int object, std::string type);
 };

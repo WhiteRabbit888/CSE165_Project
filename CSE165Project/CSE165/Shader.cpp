@@ -2,7 +2,7 @@
 #include <fstream>
 #include <sstream>
 
-void Shader::Compile(const char* vertexSource, const char* fragmentSource)
+void Shader::Compile(const char* vPath, const char* fPath)
 {
 
     // 1. retrieve the vertex/fragment source code from filePath
@@ -14,8 +14,8 @@ void Shader::Compile(const char* vertexSource, const char* fragmentSource)
     try
     {
         // open files
-        vShaderFile.open(vertexCode);
-        fShaderFile.open(fragmentCode);
+        vShaderFile.open(vPath);
+        fShaderFile.open(fPath);
         std::stringstream vShaderStream, fShaderStream;
         // read file's buffer contents into streams
         vShaderStream << vShaderFile.rdbuf();
@@ -38,13 +38,13 @@ void Shader::Compile(const char* vertexSource, const char* fragmentSource)
 
     // vertex Shader
     vertex = glCreateShader(GL_VERTEX_SHADER);
-    glShaderSource(vertex, 1, &vertexSource, NULL);
+    glShaderSource(vertex, 1, &vShaderCode, NULL);
     glCompileShader(vertex);
     checkCompileErrors(vertex, "VERTEX");
 
     // Fragment Shader
     fragment = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(fragment, 1, &fragmentSource, NULL);
+    glShaderSource(fragment, 1, &fShaderCode, NULL);
     glCompileShader(fragment);
     checkCompileErrors(fragment, "FRAGMENT");
 
@@ -76,38 +76,28 @@ void Shader::Unbind()
     glUseProgram(0);
 }
 
-void Shader::SetInteger(const char* name, int value, bool use)
+void Shader::SetInteger(const char* name, int value)
 {
-    if (use)
-        this->Bind();
     glUniform1i(glGetUniformLocation(ID, name), value);
 }
 
-void Shader::setUniform4f(const char* name, glm::vec4 val, bool use)
+void Shader::setUniform4f(const char* name, glm::vec4 val)
 {
-    if (use)
-        this->Bind();
     glUniform4f(glGetUniformLocation(ID, name),val.x, val.y, val.z, val.w);
 }
 
-void Shader::setUniform3f(const char* name, glm::vec3 val, bool use)
+void Shader::setUniform3f(const char* name, glm::vec3 val)
 {
-    if (use)
-        this->Bind();
     glUniform3f(glGetUniformLocation(ID, name), val.x, val.y, val.z);
 }
 
-void Shader::setUniform2f(const char* name, glm::vec2 val, bool use)
+void Shader::setUniform2f(const char* name, glm::vec2 val)
 {
-    if (use)
-        this->Bind();
     glUniform2f(glGetUniformLocation(ID, name), val.x, val.y);
 }
 
-void Shader::SetMatrix4(const char* name, const glm::mat4& matrix, bool use)
+void Shader::SetMatrix4(const char* name, const glm::mat4& matrix)
 {
-    if (use)
-        this->Bind();
     glUniformMatrix4fv(glGetUniformLocation(ID, name), 1, false, glm::value_ptr(matrix));
 }
 

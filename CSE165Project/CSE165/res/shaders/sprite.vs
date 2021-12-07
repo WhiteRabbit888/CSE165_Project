@@ -1,12 +1,16 @@
 #version 330 core
-layout (location = 0) in vec4 vertex; // <vec2 pos, vec2 coords>
-out vec2 coords;
+layout (location = 0) in vec3 aPos;   // the position variable has attribute position 0
+//layout (location = 1) in vec3 aColor; // the color variable has attribute position 1
+layout (location = 1) in vec2 aTexCoord;
+  
+//out vec3 inColor; // output a color to the fragment shader
+out vec2 texCoord;
 
-uniform mat4 model;
-uniform mat4 projection;
+uniform mat4 transform;
 
 void main()
 {
-    coords = vertex.zw;
-    gl_Position = projection * model * vec4(vertex.xy, 0.0, 1.0);
-}
+    gl_Position = transform * vec4(aPos, 1.0f);
+    texCoord = vec2(aTexCoord.x, aTexCoord.y);
+    //inColor = aColor; // set ourColor to the input color we got from the vertex data
+}     

@@ -1,6 +1,7 @@
 #include "Game.h"
 #include <SOIL2.h>
 
+
 Renderer *renderer;
 //GameObject *Player;
 
@@ -19,7 +20,7 @@ void Game::ProcessInput(float dt)
 	}
 }
 
-void Player()
+unsigned int initdata()
 {
 	unsigned int VAO, VBO;
 	float positions[] = {
@@ -45,12 +46,41 @@ void Player()
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 
+	return VAO;
+}
+
+void Jump()
+{
+
+}
+
+void Player()
+{
+	unsigned int VAO = initdata();	//need the VAO to bind vertex array after shder compilation
+
 	Shader pShader;
-	pShader.Compile("res/shaders/sprite.vs", "res/shaders/sprite.fs");
+	pShader.Compile("res/shaders/sprite.vs", "res/shaders/sprite.frag");
+	glBindVertexArray(VAO);
 	pShader.Bind();
+
+	/*const char* file = "res/textures/cacodemon.png";
+	int width = 300, height = 300, channels;
+
+	unsigned char* data = SOIL_load_image(file, &width, &height, &channels, SOIL_CREATE_NEW_ID);
+	Texture2D caco;
+	caco.Generate(file, 300, 300, data);*/
+
+	glDrawArrays(GL_TRIANGLES, 0, 6);
+
+
+	glm::vec4 vec(1.0f, 0.0f, 0.0f, 1.0f);
+	glm::mat4 trans = glm::mat4(1.0f);
+	trans = glm::translate(trans, glm::vec3(1.0f, 1.0f, 0.0f));
+	vec = trans * vec;
+	std::cout << vec.x << vec.y << vec.z << std::endl;
 }
 
 void Game::Render()
 {
-	
+	Player();
 }
