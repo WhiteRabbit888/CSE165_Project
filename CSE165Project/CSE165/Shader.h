@@ -16,7 +16,7 @@ public:
     Shader() {}
     ~Shader();
     // use/activate the shader
-    Shader &Bind();
+    void Bind();
     void Unbind();
 
     void Compile(const char* vertexSource, const char* fragmentSource);

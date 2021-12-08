@@ -4,7 +4,6 @@
 
 void Shader::Compile(const char* vPath, const char* fPath)
 {
-
     // 1. retrieve the vertex/fragment source code from filePath
     std::string vertexCode;
     std::string fragmentCode;
@@ -65,10 +64,9 @@ Shader::~Shader()
     glDeleteProgram(ID);
 }
 
- Shader &Shader::Bind()
+void Shader::Bind()
 {
     glUseProgram(ID);
-    return *this;
 }
 
 void Shader::Unbind()
@@ -128,16 +126,3 @@ void Shader::checkCompileErrors(unsigned int object, std::string type)
         }
     }
 }
-
-/*unsigned int Shader::getUniformLocation(const std::string& name)
-{
-    if (uniformLocationCache.find(name) != uniformLocationCache.end())
-        return uniformLocationCache[name];
-
-    unsigned int location = glGetUniformLocation(ID, name.c_str());
-    if (location == -1)
-        std::cout<< "Warning: uniform '" << name << "' doesn't exist" << std::endl;
-
-    uniformLocationCache[name] = location;
-    return location;
-}*/

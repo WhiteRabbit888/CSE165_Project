@@ -45,6 +45,9 @@
     <ClCompile Include="SOIL2\SOIL2\wfETC.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="libraries\include\GLFW\glfw3.h">
@@ -965,6 +968,9 @@
     <ClInclude Include="SOIL2\SOIL2\wfETC.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Library Include="libraries\lib\glfw3.lib" />
@@ -1382,6 +1388,8 @@
     <None Include="libraries\include\glm\gtx\wrap.inl">
       <Filter>Header Files</Filter>
     </None>
+    <None Include="res\shaders\enemy.vs" />
+    <None Include="res\shaders\enemy.fs" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\cacodemon.png">

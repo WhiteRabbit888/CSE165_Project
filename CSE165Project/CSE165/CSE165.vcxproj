@@ -162,6 +162,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="libraries\include\glm\detail\glm.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -174,6 +175,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GameObject.h" />
     <ClInclude Include="libraries\include\glad\glad.h" />
     <ClInclude Include="libraries\include\GLFW\glfw3.h" />
     <ClInclude Include="libraries\include\GLFW\glfw3native.h" />
@@ -622,6 +624,8 @@
     <None Include="libraries\include\glm\gtx\vector_angle.inl" />
     <None Include="libraries\include\glm\gtx\vector_query.inl" />
     <None Include="libraries\include\glm\gtx\wrap.inl" />
+    <None Include="res\shaders\enemy.fs" />
+    <None Include="res\shaders\enemy.vs" />
     <None Include="res\shaders\sprite.fs" />
     <None Include="res\shaders\sprite.vs" />
   </ItemGroup>
