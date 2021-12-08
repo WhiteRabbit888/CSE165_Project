@@ -80,8 +80,6 @@ int main(int argc, char* argv[])
  
         glfwSwapBuffers(window);
     }
-
-
     // Terminate GLFW, clearing any resources allocated by GLFW.
     
     glfwTerminate();

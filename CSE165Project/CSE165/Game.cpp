@@ -147,22 +147,44 @@ void Game::spawnEnemy(float dt)
 
 void Game::Jump(float dt)
 {
-	if (player->Position.y <= -0.2f)
+	static bool falling = false;
+
+	if (player->Position.y < -0.10f && !falling)
 	{
 		player->Position.y += player->Velocity.y * dt;
 		Draw(playertext, player->Position, player->Size);
 	}
 	else
-		initPos();
+		falling = true;
+
+	if (player->Position.y >= -0.7f && falling)
+	{
+		player->Position.y -= player->Velocity.y * dt;
+		Draw(playertext, player->Position, player->Size);
+	}
+	else
+		falling = false;
 }
 
 void Game::Update(float dt)
 {
+	static float timer = 600.0f;
+	static bool jumping = false;
+
 	if (this->Keys[GLFW_KEY_SPACE])
+		jumping = true;
+
+	if (jumping)
 	{
 		this->Jump(dt);
-	}
 
+		if (timer-- == 0)
+		{
+			timer = 600.0f;
+			jumping = false;
+			initPos();
+		}
+	}
 	this->spawnEnemy(dt);
 }
 
