@@ -1,15 +1,47 @@
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+
 #include "Game.h"
 #include <SOIL2.h>
 
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
-Renderer *renderer;
-//GameObject *Player;
+#include "stb_image.h"
 
-Game::Game(unsigned int width, unsigned int height) : State(GAME_ACTIVE), Keys(), Width(width), Height(height) {}
+Game::Game(int width, int height) : State(GAME_ACTIVE), Keys(), Width(width), Height(height) 
+{
+
+}
+
+void Game::initText()
+{
+	int width, height, nrChannels;
+	stbi_set_flip_vertically_on_load(true);
+	const char* file = "res/textures/cacodemon.png";
+	unsigned char* data = SOIL_load_image(file, &width, &height, &nrChannels, SOIL_LOAD_AUTO);
+
+	playertext.Generate(width, height, data);
+	SOIL_free_image_data(data);
+	shader.Bind();
+	shader.SetInteger("texture1", 0);
+
+	glm::vec2 size = glm::vec2(0.35f, 0.35f);
+
+	glm::mat4 transform = glm::mat4(1.0f);
+	transform = glm::translate(transform, glm::vec3(-2.0f * size.x, -2.0f * size.y, 0.0f));
+
+	transform = glm::scale(transform, glm::vec3(size, 1.0f));
+	
+	unsigned int transformLoc = glGetUniformLocation(shader.ID, "transform");
+	glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+
+}
 
 Game::~Game()
 {
-	delete renderer;
+
 }
 
 void Game::ProcessInput(float dt)
@@ -20,33 +52,44 @@ void Game::ProcessInput(float dt)
 	}
 }
 
-unsigned int initdata()
+void Game::initdata()
 {
-	unsigned int VAO, VBO;
-	float positions[] = {
-		// pos      // tex
-		0.0f, 1.0f, 0.0f, 1.0f,
-		1.0f, 0.0f, 1.0f, 0.0f,
-		0.0f, 0.0f, 0.0f, 0.0f,
+	unsigned int IBO, VBO;
 
-		0.0f, 1.0f, 0.0f, 1.0f,
-		1.0f, 1.0f, 1.0f, 1.0f,
-		1.0f, 0.0f, 1.0f, 0.0f
+	shader.Compile("res/shaders/sprite.vs", "res/shaders/sprite.fs");
+
+	float positions[] = {
+		// positions          // texture coords
+		 0.5f,  0.5f, 0.0f,   1.0f, 1.0f, // top right
+		 0.5f, -0.5f, 0.0f,   1.0f, 0.0f, // bottom right
+		-0.5f, -0.5f, 0.0f,   0.0f, 0.0f, // bottom left
+		-0.5f,  0.5f, 0.0f,   0.0f, 1.0f  // top left 
+	};
+
+	unsigned int indices[] = {
+		0, 1, 3, // first triangle
+		1, 2, 3  // second triangle
 	};
 
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
+	glGenBuffers(1, &IBO);
+
+	glBindVertexArray(VAO);
 
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(positions), positions, GL_STATIC_DRAW);
 
-	glBindVertexArray(VAO);
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glBindVertexArray(0);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IBO);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-	return VAO;
+	//position
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(0);
+
+	//textures
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+	glEnableVertexAttribArray(1);
 }
 
 void Jump()
@@ -54,30 +97,14 @@ void Jump()
 
 }
 
-void Player()
+void Game::Player()
 {
-	unsigned int VAO = initdata();	//need the VAO to bind vertex array after shder compilation
-
-	Shader pShader;
-	pShader.Compile("res/shaders/sprite.vs", "res/shaders/sprite.frag");
+	// bind textures on corresponding texture units
+	glActiveTexture(GL_TEXTURE0);
+	playertext.Bind();
+	shader.Bind();
 	glBindVertexArray(VAO);
-	pShader.Bind();
-
-	/*const char* file = "res/textures/cacodemon.png";
-	int width = 300, height = 300, channels;
-
-	unsigned char* data = SOIL_load_image(file, &width, &height, &channels, SOIL_CREATE_NEW_ID);
-	Texture2D caco;
-	caco.Generate(file, 300, 300, data);*/
-
-	glDrawArrays(GL_TRIANGLES, 0, 6);
-
-
-	glm::vec4 vec(1.0f, 0.0f, 0.0f, 1.0f);
-	glm::mat4 trans = glm::mat4(1.0f);
-	trans = glm::translate(trans, glm::vec3(1.0f, 1.0f, 0.0f));
-	vec = trans * vec;
-	std::cout << vec.x << vec.y << vec.z << std::endl;
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }
 
 void Game::Render()

@@ -5,12 +5,9 @@
 // GLFW
 #include <GLFW/glfw3.h>
 
-#include "Renderer.h"
 #include "Game.h"
 
 #include <iostream>
-
-#define GLFW_INCLUDE_GLCOREARB
 
 // Window dimensions
 const GLuint WIDTH = 800, HEIGHT = 600;
@@ -30,7 +27,7 @@ int main(int argc, char* argv[])
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-   // glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
@@ -38,18 +35,8 @@ int main(int argc, char* argv[])
     GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Dino game", nullptr, nullptr);
     glfwMakeContextCurrent(window);
 
-   // glfwGetFramebufferSize(window, &screenWidth, &screenHeight);
-
     glfwSetKeyCallback(window, key_callback);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-
-    /*if (nullptr == window)
-    {
-        std::cout << "Failed to create GLFW window" << std::endl;
-        glfwTerminate();
-
-        return EXIT_FAILURE;
-    }*/
 
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
@@ -64,7 +51,10 @@ int main(int argc, char* argv[])
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     //initializing our game
-    //Dino.Init();
+    Dino.initdata();
+    unsigned int VAO = Dino.VAO;
+
+    Dino.initText();
 
     // Game loop
     while (!glfwWindowShouldClose(window))
@@ -75,11 +65,13 @@ int main(int argc, char* argv[])
         // Render
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);   // Clear the colorbuffer
         glClear(GL_COLOR_BUFFER_BIT);
+        
         Dino.Render();
 
         // Swap the screen buffers
         glfwSwapBuffers(window);
     }
+
 
     // Terminate GLFW, clearing any resources allocated by GLFW.
     glfwTerminate();

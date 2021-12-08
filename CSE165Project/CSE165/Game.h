@@ -1,5 +1,6 @@
 #pragma once
-#include "Renderer.h"
+#include "Shader.h"
+#include "Texture.h"
 
 enum GameState 
 {
@@ -13,13 +14,18 @@ public:
     // game state
     GameState    State;
     bool         Keys[1024];
-    unsigned int Width, Height;
+    int Width, Height;
+    unsigned int VAO;
+    Shader shader;
+    Texture2D playertext;
+    Texture2D enemytext;
+
     // constructor/destructor
-    Game(unsigned int width, unsigned int height);
+    Game(int width, int height);
     ~Game();
-    // initialize game state (load all shaders/textures/levels)
-    //void Init();
-    // game loop
+    void initText();
+    void initdata();
+    void Player();
     void ProcessInput(float dt);
     void Update(float dt);
     void Render();

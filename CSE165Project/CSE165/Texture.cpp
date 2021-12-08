@@ -1,5 +1,5 @@
 #include <SOIL2.h>
-
+#include "stb_image.h"
 #include "Texture.h"
 #include <iostream>
 #include <string>
@@ -7,25 +7,18 @@
 Texture2D::Texture2D()
     : Width(0), Height(0), Internal_Format(GL_RGB), Image_Format(GL_RGB), Wrap_S(GL_REPEAT), Wrap_T(GL_REPEAT), Filter_Min(GL_LINEAR), Filter_Max(GL_LINEAR)
 {
-    glGenTextures(1, &this->ID);
+   // glGenTextures(1, &this->ID);
 }
 
-void Texture2D::Generate(const char* file, unsigned int width, unsigned int height, unsigned char* data)
+void Texture2D::Generate(int width, int height, unsigned char* data)
 {
     this->Width = width;
     this->Height = height;
 
-    this->ID = SOIL_load_OGL_texture // load an image file directly as a new OpenGL texture
-    (
-        file,
-        SOIL_LOAD_AUTO,
-        SOIL_CREATE_NEW_ID,
-        SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
-    );
-
     // create Texture
     glBindTexture(GL_TEXTURE_2D, this->ID);
-    glTexImage2D(GL_TEXTURE_2D, 0, this->Internal_Format, width, height, 0, this->Image_Format, GL_UNSIGNED_BYTE, data);
+    glTexImage2D(GL_TEXTURE_2D, 0, this->Internal_Format, Width, Height, 0, this->Image_Format, GL_UNSIGNED_BYTE, data);
+    //glGenerateMipmap(GL_TEXTURE_2D);
     // set Texture wrap and filter modes
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, this->Wrap_S);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, this->Wrap_T);

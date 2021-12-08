@@ -11,7 +11,6 @@ class Shader
 public:
     // the program ID
     unsigned int ID;
-    //std::unordered_map<std::string, int> uniformLocationCache;
 
     // constructor reads and builds the shader
     Shader() {}

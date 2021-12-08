@@ -169,7 +169,6 @@
     <ClCompile Include="SOIL2\SOIL2\image_helper.c" />
     <ClCompile Include="SOIL2\SOIL2\SOIL2.c" />
     <ClCompile Include="SOIL2\SOIL2\wfETC.c" />
-    <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Texture.cpp" />
   </ItemGroup>
@@ -478,7 +477,6 @@
     <ClInclude Include="SOIL2\SOIL2\stb_image.h" />
     <ClInclude Include="SOIL2\SOIL2\stb_image_write.h" />
     <ClInclude Include="SOIL2\SOIL2\wfETC.h" />
-    <ClInclude Include="Renderer.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Texture.h" />
   </ItemGroup>
@@ -624,7 +622,7 @@
     <None Include="libraries\include\glm\gtx\vector_angle.inl" />
     <None Include="libraries\include\glm\gtx\vector_query.inl" />
     <None Include="libraries\include\glm\gtx\wrap.inl" />
-    <None Include="res\shaders\sprite.frag" />
+    <None Include="res\shaders\sprite.fs" />
     <None Include="res\shaders\sprite.vs" />
   </ItemGroup>
   <ItemGroup>
