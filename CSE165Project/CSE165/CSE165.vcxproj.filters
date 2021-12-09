@@ -1388,11 +1388,14 @@
     <None Include="libraries\include\glm\gtx\wrap.inl">
       <Filter>Header Files</Filter>
     </None>
-    <None Include="res\shaders\enemy.vs" />
     <None Include="res\shaders\enemy.fs" />
+    <None Include="res\shaders\enemy.vs" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\cacodemon.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\cactus.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

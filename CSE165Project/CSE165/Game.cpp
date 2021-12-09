@@ -16,31 +16,47 @@ Game::Game(int width, int height) : State(GAME_ACTIVE), Keys(), Width(width), He
 
 Game::~Game()
 {
-
+	delete player;
+	delete enemy;
 }
 
 void Game::initdata()
 {
+	shader.Compile("res/shaders/sprite.vs", "res/shaders/sprite.fs");
+	shader.Compile("res/shaders/enemy.vs", "res/shaders/enemy.fs");
+
+	shader.Bind();
+	auto loc = glGetUniformLocation(shader.ID, "textures");
+	int samplers[2] = { 0, 1 };
+	glUniform1iv(loc, 2, samplers);
+
 	unsigned int IBO, VBO;
 
-	shader.Compile("res/shaders/sprite.vs", "res/shaders/sprite.fs");
-
+	//rendering sprites as a rectangle comprised of two right triangles
 	float positions[] = {
-		 0.5f,  0.5f, 0.0f, 1.0f, 1.0f, // top right
-		 0.5f, -0.5f, 0.0f, 1.0f, 0.0f, // bottom right
-		-0.5f, -0.5f, 0.0f, 0.0f, 0.0f, // bottom left
-		-0.5f,  0.5f, 0.0f, 0.0f, 1.0f  // top left 
+		//positions		//texture coordinates	//texture indices
+		 0.5f,  0.5f, 0.0f,		1.0f, 1.0f,		0.0f,		// top right
+		 0.5f, -0.5f, 0.0f,		1.0f, 0.0f,		0.0f,		// bottom right
+		-0.5f, -0.5f, 0.0f,		0.0f, 0.0f,		0.0f,		// bottom left
+		-0.5f,  0.5f, 0.0f,		0.0f, 1.0f,		0.0f,		// top left 
+
+		 0.5f,  0.5f, 0.0f,		1.0f, 1.0f,		1.0f,		// top right
+		 0.5f, -0.5f, 0.0f,		1.0f, 0.0f,		1.0f,		// bottom right
+		-0.5f, -0.5f, 0.0f,		0.0f, 0.0f,		1.0f,		// bottom left
+		-0.5f,  0.5f, 0.0f,		0.0f, 1.0f,		1.0f		// top left 
 	};
+	//indexes our vertices 
 	unsigned int indices[] = {
 		0, 1, 3, // first triangle
 		1, 2, 3  // second triangle
 	};
 
 	glGenVertexArrays(1, &VAO);
+	glBindVertexArray(VAO);
+
 	glGenBuffers(1, &VBO);
 	glGenBuffers(1, &IBO);
 
-	glBindVertexArray(VAO);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(positions), positions, GL_STATIC_DRAW);
 
@@ -48,33 +64,38 @@ void Game::initdata()
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
 	//position
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
 
 	//textures
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
 	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)12);
+
+	//texture indices
+	glEnableVertexAttribArray(2);
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)28);
 }
 
 void Game::initText()
 {
 	int width, height, nrChannels;
 	stbi_set_flip_vertically_on_load(true);
-	const char* file = "res/textures/cacodemon.png";
-	unsigned char* data = SOIL_load_image(file, &width, &height, &nrChannels, SOIL_LOAD_AUTO);
 
+	unsigned char* data = SOIL_load_image("res/textures/cacodemon.png", &width, &height, &nrChannels, SOIL_LOAD_AUTO);
+
+	playertext.ID = SOIL_load_OGL_texture("res/textures/cacodemon.png", 3, 0, SOIL_FLAG_TEXTURE_REPEATS);
 	playertext.Generate(width, height, data);
 	SOIL_free_image_data(data);
-	shader.Bind();
-	shader.SetInteger("texture1", 0);
 
-	file = "res/textures/cacodemon.png";
-	data = SOIL_load_image(file, &width, &height, &nrChannels, SOIL_LOAD_AUTO);
+	data = SOIL_load_image("res/textures/cactus.png", &width, &height, &nrChannels, SOIL_LOAD_AUTO);
 
+	enemytext.ID = SOIL_load_OGL_texture("res/textures/cactus.png", 3, 0, SOIL_FLAG_TEXTURE_REPEATS);
 	enemytext.Generate(width, height, data);
 	SOIL_free_image_data(data);
-	shader.Bind();
-	shader.SetInteger("texture1", 0);
+
+	//shader.Bind();
+	//shader.SetInteger("texture1", 0);
+	//shader.SetInteger("texture2", 0);
 }
 
 void Game::initPos()
@@ -89,12 +110,14 @@ void Game::initPos()
 
 	shader.SetMatrix4("transform", transform);
 
-	glActiveTexture(GL_TEXTURE0);
 	playertext.Bind();
 
 	glBindVertexArray(VAO);
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0);
+
+	playertext.Unbind();
+	shader.Unbind();
 
 	player = new GameObject(playerpos, size, playertext, glm::vec2(0, 1.0f));
 }
@@ -110,22 +133,24 @@ void Game::initPosEnemy()
 
 	shader.SetMatrix4("transform", transform);
 
-	glActiveTexture(GL_TEXTURE1);
 	enemytext.Bind();
 
 	glBindVertexArray(VAO);
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0);
 
+	enemytext.Unbind();
+	shader.Unbind();
+
 	enemy = new GameObject(enemypos, size, enemytext, glm::vec2(0.5f, 0.0f));
 }
 
-void Game::Draw(Texture2D & sprite, glm::vec2 pos, glm::vec2 size)
+void Game::Draw(Texture2D &sprite, Shader &shader, glm::vec2 pos, glm::vec2 size)
 {
 	glm::mat4 transform = glm::mat4(1.0f);	
 
 	transform = glm::translate(transform, glm::vec3(pos.x, pos.y, 0.0f));
-	transform = glm::scale(transform, glm::vec3(size, 1.0f)); // last scale
+	transform = glm::scale(transform, glm::vec3(size, 1.0f));
 
 	shader.SetMatrix4("transform", transform);
 
@@ -139,7 +164,7 @@ void Game::spawnEnemy(float dt)
 	if (enemy->Position.x >= -2.0f)
 	{
 		enemy->Position.x -= dt;
-		Draw(enemytext, enemy->Position, enemy->Size);
+		Draw(enemytext, shader, enemy->Position, enemy->Size);
 	}
 	else
 		initPosEnemy();
@@ -149,10 +174,10 @@ void Game::Jump(float dt)
 {
 	static bool falling = false;
 
-	if (player->Position.y < -0.10f && !falling)
+	if (player->Position.y < 0.0f && !falling)
 	{
 		player->Position.y += player->Velocity.y * dt;
-		Draw(playertext, player->Position, player->Size);
+		Draw(playertext, shader, player->Position, player->Size);
 	}
 	else
 		falling = true;
@@ -160,7 +185,7 @@ void Game::Jump(float dt)
 	if (player->Position.y >= -0.7f && falling)
 	{
 		player->Position.y -= player->Velocity.y * dt;
-		Draw(playertext, player->Position, player->Size);
+		Draw(playertext, shader, player->Position, player->Size);
 	}
 	else
 		falling = false;
@@ -190,8 +215,18 @@ void Game::Update(float dt)
 
 void Game::Player()
 {
-	glActiveTexture(GL_TEXTURE0);
+	//glActiveTexture(GL_TEXTURE0);
 	playertext.Bind();
+
+	shader.Bind();
+	glBindVertexArray(VAO);
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+}
+
+void Game::Enemy()
+{
+	//glActiveTexture(GL_TEXTURE1);
+	enemytext.Bind();
 
 	shader.Bind();
 	glBindVertexArray(VAO);
@@ -201,5 +236,6 @@ void Game::Player()
 void Game::Render()
 {
 	Player();
-	Draw(playertext, player->Position, player->Size);
+	Enemy();
+	Draw(playertext, shader, player->Position, player->Size);
 }

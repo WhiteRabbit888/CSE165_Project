@@ -52,7 +52,6 @@ int main(int argc, char* argv[])
 
     //initializing our game
     Dino.initdata();
-    unsigned int VAO = Dino.VAO;
 
     Dino.initText();
     Dino.initPos();

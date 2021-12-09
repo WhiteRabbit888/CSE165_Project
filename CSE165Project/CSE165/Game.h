@@ -34,9 +34,10 @@ public:
     void initPos();
     void initPosEnemy();
     void Player();
+    void Enemy();
     void Jump(float dt);
     void spawnEnemy(float dt);
     void Update(float dt);
-    void Draw(Texture2D& sprite, glm::vec2 pos, glm::vec2 size);
+    void Draw(Texture2D& sprite, Shader& shader, glm::vec2 pos, glm::vec2 size);
     void Render();
 };
