@@ -35,6 +35,7 @@ public:
     void initPosEnemy();
     void Player();
     void Enemy();
+    bool CheckCollision();
     void Jump(float dt);
     void spawnEnemy(float dt);
     void Update(float dt);

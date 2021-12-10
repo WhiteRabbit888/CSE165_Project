@@ -57,8 +57,10 @@ int main(int argc, char* argv[])
     Dino.initPos();
     Dino.initPosEnemy();
 
-    float lastTime = 0.0f;
-    float deltaTime = 0.0f;
+    double lastTime = 0.0f;
+    double deltaTime = 0.0f;
+    //float timer = glfwGetTime();
+    static double limfps = 1.0 / 60.0;
 
     // Game loop
     while (!glfwWindowShouldClose(window))
@@ -66,11 +68,15 @@ int main(int argc, char* argv[])
         // Check if any events have been activiated (key pressed, mouse moved etc.) and call corresponding response functions
         glfwPollEvents();
 
-        float currentFrame = glfwGetTime();
-        deltaTime = currentFrame - lastTime;
-        lastTime = currentFrame;
+        //limitint fps for more consist performance across devices
+        double currentTime = glfwGetTime();
+        deltaTime += (currentTime - lastTime)/limfps;
+        lastTime = currentTime;
 
-        Dino.Update(deltaTime);
+        while (deltaTime >= 0.5f) {
+            Dino.Update(deltaTime);
+            deltaTime--;
+        }
 
         // Render
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);   // Clear the colorbuffer
@@ -91,11 +97,20 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
 
-    if (key == GLFW_KEY_SPACE && action == GLFW_PRESS)
+    if (key == GLFW_KEY_SPACE && action == GLFW_PRESS) 
+    {
+        if (Dino.State == GAME_INACTIVE)
+        {
+            Dino.initPos();
+            Dino.initPosEnemy();
+            Dino.State = GAME_ACTIVE;
+        }
+
         Dino.Keys[key] = true;
+    }
+
     else
         Dino.Keys[key] = false;
-
 }
 
 

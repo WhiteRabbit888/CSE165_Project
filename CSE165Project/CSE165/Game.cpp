@@ -9,7 +9,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-Game::Game(int width, int height) : State(GAME_ACTIVE), Keys(), Width(width), Height(height) 
+Game::Game(int width, int height) : State(GAME_INACTIVE), Keys(), Width(width), Height(height) 
 {
 
 }
@@ -93,9 +93,12 @@ void Game::initText()
 	enemytext.Generate(width, height, data);
 	SOIL_free_image_data(data);
 
-	//shader.Bind();
-	//shader.SetInteger("texture1", 0);
-	//shader.SetInteger("texture2", 0);
+	playertext.Bind();
+	enemytext.Bind();
+
+	shader.Bind();
+	shader.SetInteger("texture1", 0);
+	shader.SetInteger("texture1", 0);
 }
 
 void Game::initPos()
@@ -110,37 +113,21 @@ void Game::initPos()
 
 	shader.SetMatrix4("transform", transform);
 
-	playertext.Bind();
-
-	glBindVertexArray(VAO);
-	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-	glBindVertexArray(0);
-
-	playertext.Unbind();
 	shader.Unbind();
 
-	player = new GameObject(playerpos, size, playertext, glm::vec2(0, 1.0f));
+	player = new GameObject(playerpos, size, playertext, glm::vec2(0, 0.1f));
 }
 
 void Game::initPosEnemy()
 {
 	glm::mat4 transform = glm::mat4(1.0f);
 	glm::vec2 size = glm::vec2(0.15f, 0.15f);
-	glm::vec2 enemypos = glm::vec2(4.0f * size.x, -5.0f * size.y);
+	glm::vec2 enemypos = glm::vec2(7.0f * size.x, -5.0f * size.y);
 
 	transform = glm::translate(transform, glm::vec3(enemypos, 0.0f));
 	transform = glm::scale(transform, glm::vec3(size, 1.0f));
 
 	shader.SetMatrix4("transform", transform);
-
-	enemytext.Bind();
-
-	glBindVertexArray(VAO);
-	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-	glBindVertexArray(0);
-
-	enemytext.Unbind();
-	shader.Unbind();
 
 	enemy = new GameObject(enemypos, size, enemytext, glm::vec2(0.5f, 0.0f));
 }
@@ -159,11 +146,23 @@ void Game::Draw(Texture2D &sprite, Shader &shader, glm::vec2 pos, glm::vec2 size
 	glBindVertexArray(0);
 }
 
+bool Game::CheckCollision()
+{
+	// collision x-axis?
+	bool collisionX = player->Position.x + player->Size.x >= enemy->Position.x &&
+		enemy->Position.x + enemy->Size.x >= player->Position.x;
+	// collision y-axis?
+	bool collisionY = player->Position.y + player->Size.y >= enemy->Position.y &&
+		enemy->Position.y + enemy->Size.y >= player->Position.y;
+	// collision only if on both axes
+	return collisionX && collisionY;
+}
+
 void Game::spawnEnemy(float dt)
 {
-	if (enemy->Position.x >= -2.0f)
+	if (enemy->Position.x >= -1.0f)
 	{
-		enemy->Position.x -= dt;
+		enemy->Position.x -= enemy->Velocity.x * dt;
 		Draw(enemytext, shader, enemy->Position, enemy->Size);
 	}
 	else
@@ -193,29 +192,36 @@ void Game::Jump(float dt)
 
 void Game::Update(float dt)
 {
-	static float timer = 600.0f;
+	static float timer = 50.0f;
 	static bool jumping = false;
+	static float spawnrate = dt / 300.0f;
 
-	if (this->Keys[GLFW_KEY_SPACE])
-		jumping = true;
-
-	if (jumping)
+	if (this->State == GAME_ACTIVE)
 	{
-		this->Jump(dt);
+		if (this->Keys[GLFW_KEY_SPACE])
+			jumping = true;
 
-		if (timer-- == 0)
+		if (jumping)
 		{
-			timer = 600.0f;
-			jumping = false;
-			initPos();
+			this->Jump(dt / 2.0f);
+
+			if (timer-- <= 0)
+			{
+				timer = 50.0f;
+				jumping = false;
+				initPos();
+			}
 		}
+
+		this->spawnEnemy(spawnrate);
 	}
-	this->spawnEnemy(dt);
+	if (CheckCollision())
+		this->State = GAME_INACTIVE;
 }
 
 void Game::Player()
 {
-	//glActiveTexture(GL_TEXTURE0);
+	glActiveTexture(GL_TEXTURE0);
 	playertext.Bind();
 
 	shader.Bind();
@@ -225,7 +231,7 @@ void Game::Player()
 
 void Game::Enemy()
 {
-	//glActiveTexture(GL_TEXTURE1);
+	glActiveTexture(GL_TEXTURE1);
 	enemytext.Bind();
 
 	shader.Bind();
@@ -236,6 +242,7 @@ void Game::Enemy()
 void Game::Render()
 {
 	Player();
-	Enemy();
 	Draw(playertext, shader, player->Position, player->Size);
+	Enemy();
+	Draw(enemytext, shader, enemy->Position, enemy->Size);
 }
