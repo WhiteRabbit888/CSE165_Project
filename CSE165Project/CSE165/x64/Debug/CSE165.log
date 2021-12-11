@@ -1,4 +1,7 @@
 ﻿  Game.cpp
+  Main.cpp
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\Main.cpp(77,25): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
 glfw3.lib(init.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(init.obj)' or at 'C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\x64\Debug\glfw3.pdb'; linking object as if no debug info
 glfw3.lib(window.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(window.obj)' or at 'C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\x64\Debug\glfw3.pdb'; linking object as if no debug info
 glfw3.lib(input.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(input.obj)' or at 'C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\x64\Debug\glfw3.pdb'; linking object as if no debug info

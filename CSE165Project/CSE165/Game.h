@@ -1,6 +1,5 @@
 #pragma once
 #include "Shader.h"
-#include "Texture.h"
 #include "GameObject.h"
 
 enum GameState 
@@ -19,9 +18,7 @@ public:
     unsigned int VAO;
 
     Shader shader;
-
-    Texture2D playertext;
-    Texture2D enemytext;
+    unsigned int textures[2];
 
     GameObject *player;
     GameObject *enemy;
@@ -39,6 +36,6 @@ public:
     void Jump(float dt);
     void spawnEnemy(float dt);
     void Update(float dt);
-    void Draw(Texture2D& sprite, Shader& shader, glm::vec2 pos, glm::vec2 size);
+    void Draw(unsigned int texture, glm::vec2 pos, glm::vec2 size);
     void Render();
 };

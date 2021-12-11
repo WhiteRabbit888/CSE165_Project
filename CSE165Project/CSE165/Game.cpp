@@ -24,12 +24,7 @@ void Game::initdata()
 {
 	shader.Compile("res/shaders/sprite.vs", "res/shaders/sprite.fs");
 	shader.Compile("res/shaders/enemy.vs", "res/shaders/enemy.fs");
-
-	shader.Bind();
-	auto loc = glGetUniformLocation(shader.ID, "textures");
-	int samplers[2] = { 0, 1 };
-	glUniform1iv(loc, 2, samplers);
-
+	
 	unsigned int IBO, VBO;
 
 	//rendering sprites as a rectangle comprised of two right triangles
@@ -48,7 +43,10 @@ void Game::initdata()
 	//indexes our vertices 
 	unsigned int indices[] = {
 		0, 1, 3, // first triangle
-		1, 2, 3  // second triangle
+		1, 2, 3,  // second triangle
+
+		4, 5, 7,
+		5, 6, 7
 	};
 
 	glGenVertexArrays(1, &VAO);
@@ -69,36 +67,43 @@ void Game::initdata()
 
 	//textures
 	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)12);
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
 
 	//texture indices
 	glEnableVertexAttribArray(2);
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)28);
+	glVertexAttribPointer(2, 1, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(5 * sizeof(float)));
 }
 
 void Game::initText()
 {
+	shader.Bind();
+	glGenTextures(2, textures);
 	int width, height, nrChannels;
+
 	stbi_set_flip_vertically_on_load(true);
 
-	unsigned char* data = SOIL_load_image("res/textures/cacodemon.png", &width, &height, &nrChannels, SOIL_LOAD_AUTO);
-
-	playertext.ID = SOIL_load_OGL_texture("res/textures/cacodemon.png", 3, 0, SOIL_FLAG_TEXTURE_REPEATS);
-	playertext.Generate(width, height, data);
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, textures[0]);
+	unsigned char* data = SOIL_load_image("res/textures/cacodemon.png", &width, &height, &nrChannels, SOIL_LOAD_RGB);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+	// set Texture wrap and filter modes
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 	SOIL_free_image_data(data);
+	glUniform1i(glGetUniformLocation(shader.ID, "texture1"), 0);
 
-	data = SOIL_load_image("res/textures/cactus.png", &width, &height, &nrChannels, SOIL_LOAD_AUTO);
-
-	enemytext.ID = SOIL_load_OGL_texture("res/textures/cactus.png", 3, 0, SOIL_FLAG_TEXTURE_REPEATS);
-	enemytext.Generate(width, height, data);
+	glActiveTexture(GL_TEXTURE1);
+	glBindTexture(GL_TEXTURE_2D, textures[1]);
+	data = SOIL_load_image("res/textures/cactus.png", &width, &height, &nrChannels, SOIL_LOAD_RGB);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 	SOIL_free_image_data(data);
-
-	playertext.Bind();
-	enemytext.Bind();
-
-	shader.Bind();
-	shader.SetInteger("texture1", 0);
-	shader.SetInteger("texture1", 0);
+	glUniform1i(glGetUniformLocation(shader.ID, "texture2"), 1);
 }
 
 void Game::initPos()
@@ -113,9 +118,7 @@ void Game::initPos()
 
 	shader.SetMatrix4("transform", transform);
 
-	shader.Unbind();
-
-	player = new GameObject(playerpos, size, playertext, glm::vec2(0, 0.1f));
+	player = new GameObject(playerpos, size, textures[0], glm::vec2(0, 0.1f));
 }
 
 void Game::initPosEnemy()
@@ -129,10 +132,10 @@ void Game::initPosEnemy()
 
 	shader.SetMatrix4("transform", transform);
 
-	enemy = new GameObject(enemypos, size, enemytext, glm::vec2(0.5f, 0.0f));
+	enemy = new GameObject(enemypos, size, textures[1], glm::vec2(0.5f, 0.0f));
 }
 
-void Game::Draw(Texture2D &sprite, Shader &shader, glm::vec2 pos, glm::vec2 size)
+void Game::Draw(unsigned int texture, glm::vec2 pos, glm::vec2 size)
 {
 	glm::mat4 transform = glm::mat4(1.0f);	
 
@@ -141,8 +144,10 @@ void Game::Draw(Texture2D &sprite, Shader &shader, glm::vec2 pos, glm::vec2 size
 
 	shader.SetMatrix4("transform", transform);
 
+	glBindTexture(GL_TEXTURE_2D, texture);
+
 	glBindVertexArray(VAO);
-	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+	glDrawElements(GL_TRIANGLES, 12, GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0);
 }
 
@@ -163,7 +168,7 @@ void Game::spawnEnemy(float dt)
 	if (enemy->Position.x >= -1.0f)
 	{
 		enemy->Position.x -= enemy->Velocity.x * dt;
-		Draw(enemytext, shader, enemy->Position, enemy->Size);
+		Draw(textures[1], enemy->Position, enemy->Size);
 	}
 	else
 		initPosEnemy();
@@ -176,7 +181,7 @@ void Game::Jump(float dt)
 	if (player->Position.y < 0.0f && !falling)
 	{
 		player->Position.y += player->Velocity.y * dt;
-		Draw(playertext, shader, player->Position, player->Size);
+		Draw(textures[0], player->Position, player->Size);
 	}
 	else
 		falling = true;
@@ -184,7 +189,7 @@ void Game::Jump(float dt)
 	if (player->Position.y >= -0.7f && falling)
 	{
 		player->Position.y -= player->Velocity.y * dt;
-		Draw(playertext, shader, player->Position, player->Size);
+		Draw(textures[0], player->Position, player->Size);
 	}
 	else
 		falling = false;
@@ -194,7 +199,7 @@ void Game::Update(float dt)
 {
 	static float timer = 50.0f;
 	static bool jumping = false;
-	static float spawnrate = dt / 300.0f;
+	static float spawnrate = dt / 450.0f;
 
 	if (this->State == GAME_ACTIVE)
 	{
@@ -221,28 +226,24 @@ void Game::Update(float dt)
 
 void Game::Player()
 {
-	glActiveTexture(GL_TEXTURE0);
-	playertext.Bind();
-
 	shader.Bind();
+	glBindTexture(GL_TEXTURE_2D, textures[1]);
 	glBindVertexArray(VAO);
-	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+	glDrawElements(GL_TRIANGLES, 12, GL_UNSIGNED_INT, 0);
 }
 
 void Game::Enemy()
 {
-	glActiveTexture(GL_TEXTURE1);
-	enemytext.Bind();
-
 	shader.Bind();
+	glBindTexture(GL_TEXTURE_2D, textures[0]);
 	glBindVertexArray(VAO);
-	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+	glDrawElements(GL_TRIANGLES, 12, GL_UNSIGNED_INT, 0);
 }
 
 void Game::Render()
 {
 	Player();
-	Draw(playertext, shader, player->Position, player->Size);
+	Draw(textures[0], player->Position, player->Size);
 	Enemy();
-	Draw(enemytext, shader, enemy->Position, enemy->Size);
+	Draw(textures[1], enemy->Position, enemy->Size);
 }

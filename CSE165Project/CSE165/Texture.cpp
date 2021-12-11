@@ -9,30 +9,36 @@ Texture2D::Texture2D()
 {
 }
 
-void Texture2D::Generate(int width, int height, unsigned char* data)
+unsigned int Texture2D::Generate(int width, int height, unsigned char* data)
 {
-    this->Width = width;
-    this->Height = height;
+    stbi_set_flip_vertically_on_load(true);
+
+    //unsigned char* data = SOIL_load_image(file, &width, &height, &nrChannels, SOIL_LOAD_RGB);
+    //this->ID = SOIL_load_OGL_texture(file, 3, 0, SOIL_FLAG_TEXTURE_REPEATS);
+    //glGenTextures(1, &ID);
 
     // create Texture
-    glGenTextures(1, &this->ID);
-    glBindTexture(GL_TEXTURE_2D_ARRAY, this->ID);
-    glTexImage2D(GL_TEXTURE_2D_ARRAY, 0, this->Internal_Format, Width, Height, 0, this->Image_Format, GL_UNSIGNED_BYTE, data);
+    //glBindTexture(GL_TEXTURE_2D_ARRAY, this->ID);
+    glTexImage2D(GL_TEXTURE_2D, 0, this->Internal_Format, width, height, 0, this->Image_Format, GL_UNSIGNED_BYTE, data);
     // set Texture wrap and filter modes
-    glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_WRAP_S, this->Wrap_S);
-    glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_WRAP_T, this->Wrap_T);
-    glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MIN_FILTER, this->Filter_Min);
-    glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MAG_FILTER, this->Filter_Max);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, this->Wrap_S);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, this->Wrap_T);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, this->Filter_Min);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, this->Filter_Max);
     // unbind texture
-    glBindTexture(GL_TEXTURE_2D_ARRAY, 0);
+    //glBindTexture(GL_TEXTURE_2D_ARRAY, 0);
+
+    //SOIL_free_image_data(data);
+
+    return ID;
 }
 
 void Texture2D::Bind() const
 {
-    glBindTexture(GL_TEXTURE_2D_ARRAY, this->ID);
+    glBindTexture(GL_TEXTURE_2D, this->ID);
 }
 
 void Texture2D::Unbind() const
 {
-    glBindTexture(GL_TEXTURE_2D_ARRAY, this->ID);
+    glBindTexture(GL_TEXTURE_2D, 0);
 }
