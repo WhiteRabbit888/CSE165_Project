@@ -74,26 +74,6 @@ void Shader::Unbind()
     glUseProgram(0);
 }
 
-void Shader::SetInteger(const char* name, int value)
-{
-    glUniform1i(glGetUniformLocation(ID, name), value);
-}
-
-void Shader::setUniform4f(const char* name, glm::vec4 val)
-{
-    glUniform4f(glGetUniformLocation(ID, name),val.x, val.y, val.z, val.w);
-}
-
-void Shader::setUniform3f(const char* name, glm::vec3 val)
-{
-    glUniform3f(glGetUniformLocation(ID, name), val.x, val.y, val.z);
-}
-
-void Shader::setUniform2f(const char* name, glm::vec2 val)
-{
-    glUniform2f(glGetUniformLocation(ID, name), val.x, val.y);
-}
-
 void Shader::SetMatrix4(const char* name, const glm::mat4& matrix)
 {
     glUniformMatrix4fv(glGetUniformLocation(ID, name), 1, false, glm::value_ptr(matrix));

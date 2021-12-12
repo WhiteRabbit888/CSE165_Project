@@ -20,10 +20,6 @@ public:
     void Unbind();
 
     void Compile(const char* vertexSource, const char* fragmentSource);
-    void SetInteger(const char* name, int value);
-    void setUniform4f(const char* name, glm::vec4 val);
-    void setUniform3f(const char* name, glm::vec3 val);
-    void setUniform2f(const char* name, glm::vec2 val);
     void SetMatrix4(const char* name, const glm::mat4& matrix);
     void checkCompileErrors(unsigned int object, std::string type);
 };

@@ -1,5 +1,4 @@
 #include <glm/glm.hpp>
-#include "Texture.h"
 
 class GameObject
 {

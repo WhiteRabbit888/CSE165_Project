@@ -171,7 +171,6 @@
     <ClCompile Include="SOIL2\SOIL2\SOIL2.c" />
     <ClCompile Include="SOIL2\SOIL2\wfETC.c" />
     <ClCompile Include="Shader.cpp" />
-    <ClCompile Include="Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -480,7 +479,6 @@
     <ClInclude Include="SOIL2\SOIL2\stb_image_write.h" />
     <ClInclude Include="SOIL2\SOIL2\wfETC.h" />
     <ClInclude Include="Shader.h" />
-    <ClInclude Include="Texture.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="libraries\lib\glfw3.lib" />
@@ -624,12 +622,15 @@
     <None Include="libraries\include\glm\gtx\vector_angle.inl" />
     <None Include="libraries\include\glm\gtx\vector_query.inl" />
     <None Include="libraries\include\glm\gtx\wrap.inl" />
+    <None Include="res\shaders\background.fs" />
+    <None Include="res\shaders\background.vs" />
     <None Include="res\shaders\enemy.fs" />
     <None Include="res\shaders\enemy.vs" />
     <None Include="res\shaders\sprite.fs" />
     <None Include="res\shaders\sprite.vs" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="res\textures\background.png" />
     <Image Include="res\textures\cacodemon.png" />
     <Image Include="res\textures\cactus.png" />
   </ItemGroup>

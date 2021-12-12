@@ -17,25 +17,24 @@ public:
     int Width, Height;
     unsigned int VAO;
 
-    Shader shader;
-    unsigned int textures[2];
+    Shader shaders[3];
+    unsigned int textures[3];
 
     GameObject *player;
     GameObject *enemy;
 
     // constructor/destructor
     Game(int width, int height);
-    ~Game();
+    virtual ~Game();
     void initText();
     void initdata();
     void initPos();
     void initPosEnemy();
-    void Player();
-    void Enemy();
+    void initBackground();
     bool CheckCollision();
     void Jump(float dt);
     void spawnEnemy(float dt);
     void Update(float dt);
-    void Draw(unsigned int texture, glm::vec2 pos, glm::vec2 size);
+    void Draw(unsigned int texture, Shader &shader, glm::vec2 pos, glm::vec2 size);
     void Render();
 };

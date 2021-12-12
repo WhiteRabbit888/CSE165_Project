@@ -7,8 +7,6 @@
 
 #include "Game.h"
 
-#include <iostream>
-
 // Window dimensions
 const GLuint WIDTH = 800, HEIGHT = 600;
 
@@ -45,17 +43,17 @@ int main(int argc, char* argv[])
     }
     // Define the viewport dimensions
     glViewport(0, 0, WIDTH, HEIGHT);
+    glEnable(GL_TEXTURE_2D);
 
     glEnable(GL_BLEND);
-    glEnable(GL_TEXTURE_2D);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     //initializing our game
     Dino.initdata();
-
     Dino.initText();
     Dino.initPos();
     Dino.initPosEnemy();
+    Dino.initBackground();
 
     double lastTime = 0.0f;
     double deltaTime = 0.0f;
@@ -86,7 +84,6 @@ int main(int argc, char* argv[])
         glfwSwapBuffers(window);
     }
     // Terminate GLFW, clearing any resources allocated by GLFW.
-    
     glfwTerminate();
 
     return EXIT_SUCCESS;

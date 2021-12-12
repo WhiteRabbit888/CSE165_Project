@@ -27,9 +27,6 @@
     <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Texture.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="libraries\include\glm\detail\glm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -66,9 +63,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="libraries\include\glm\common.hpp">
@@ -1390,12 +1384,17 @@
     </None>
     <None Include="res\shaders\enemy.fs" />
     <None Include="res\shaders\enemy.vs" />
+    <None Include="res\shaders\background.fs" />
+    <None Include="res\shaders\background.vs" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\cacodemon.png">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="res\textures\cactus.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\background.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
