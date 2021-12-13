@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\libraries\include\GLFW\src\context.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\libraries\include\GLFW\src\init.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\libraries\include\GLFW\src\input.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\libraries\include\GLFW\src\monitor.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\libraries\include\GLFW\src\vulkan.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\libraries\include\GLFW\src\window.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\libraries\include\GLFW\src\win32_init.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\libraries\include\GLFW\src\win32_joystick.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\libraries\include\GLFW\src\win32_monitor.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\libraries\include\GLFW\src\win32_time.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\libraries\include\GLFW\src\win32_thread.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\libraries\include\GLFW\src\win32_window.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\libraries\include\GLFW\src\wgl_context.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\libraries\include\GLFW\src\egl_context.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\libraries\include\GLFW\src\osmesa_context.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\libraries\include\GLFW\src\internal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\libraries\include\GLFW\src\mappings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\libraries\include\GLFW\src\glfw_config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\libraries\include\GLFW\include\GLFW\glfw3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\libraries\include\GLFW\include\GLFW\glfw3native.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\libraries\include\GLFW\src\win32_platform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\libraries\include\GLFW\src\win32_joystick.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\libraries\include\GLFW\src\wgl_context.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\libraries\include\GLFW\src\egl_context.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\libraries\include\GLFW\src\osmesa_context.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\libraries\include\GLFW\src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{9BCDFA7D-76E6-3340-B3E8-E028C41464A6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{433E653F-0F73-3C0A-83E1-556FC3D7012F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

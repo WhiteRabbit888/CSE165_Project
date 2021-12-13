@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\CMakeFiles\8de06f90849959fa2602098c7998fdf5\glad.h.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\CMakeFiles\274d9dcf8af0c8a9d3e46c28ba2e6266\glad-generate-files.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\libraries\include\glad\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\libraries\include\glad\CMakeFiles\glad-generate-files" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{ECB4A24B-14DD-365E-8211-55F4284E3A56}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

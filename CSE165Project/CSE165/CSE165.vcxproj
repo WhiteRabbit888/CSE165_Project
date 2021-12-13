@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -132,7 +132,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)libraries/include;$(SolutionDir)SOIL2/SOIL2</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)libraries/include;$(SolutionDir)libraries\include\SOIL2;$(SolutionDir)src;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -161,20 +161,37 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="libraries\include\SOIL2\image_DXT.c" />
+    <ClCompile Include="libraries\include\SOIL2\image_helper.c" />
+    <ClCompile Include="libraries\include\SOIL2\SOIL2.c" />
+    <ClCompile Include="libraries\include\SOIL2\wfETC.c" />
+    <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\GameObject.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="libraries\include\glm\detail\glm.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="SOIL2\SOIL2\image_DXT.c" />
-    <ClCompile Include="SOIL2\SOIL2\image_helper.c" />
-    <ClCompile Include="SOIL2\SOIL2\SOIL2.c" />
-    <ClCompile Include="SOIL2\SOIL2\wfETC.c" />
-    <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="src\Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="libraries\include\SOIL2\image_DXT.h" />
+    <ClInclude Include="libraries\include\SOIL2\image_helper.h" />
+    <ClInclude Include="libraries\include\SOIL2\jo_jpeg.h" />
+    <ClInclude Include="libraries\include\SOIL2\pkm_helper.h" />
+    <ClInclude Include="libraries\include\SOIL2\pvr_helper.h" />
+    <ClInclude Include="libraries\include\SOIL2\SOIL2.h" />
+    <ClInclude Include="libraries\include\SOIL2\stbi_DDS.h" />
+    <ClInclude Include="libraries\include\SOIL2\stbi_DDS_c.h" />
+    <ClInclude Include="libraries\include\SOIL2\stbi_ext.h" />
+    <ClInclude Include="libraries\include\SOIL2\stbi_ext_c.h" />
+    <ClInclude Include="libraries\include\SOIL2\stbi_pkm.h" />
+    <ClInclude Include="libraries\include\SOIL2\stbi_pkm_c.h" />
+    <ClInclude Include="libraries\include\SOIL2\stbi_pvr.h" />
+    <ClInclude Include="libraries\include\SOIL2\stbi_pvr_c.h" />
+    <ClInclude Include="libraries\include\SOIL2\stb_image.h" />
+    <ClInclude Include="libraries\include\SOIL2\stb_image_write.h" />
+    <ClInclude Include="libraries\include\SOIL2\wfETC.h" />
+    <ClInclude Include="src\Game.h" />
+    <ClInclude Include="src\GameObject.h" />
     <ClInclude Include="libraries\include\glad\glad.h" />
     <ClInclude Include="libraries\include\GLFW\glfw3.h" />
     <ClInclude Include="libraries\include\GLFW\glfw3native.h" />
@@ -461,24 +478,7 @@
     <ClInclude Include="libraries\include\glm\vec4.hpp" />
     <ClInclude Include="libraries\include\glm\vector_relational.hpp" />
     <ClInclude Include="libraries\include\KHR\khrplatform.h" />
-    <ClInclude Include="SOIL2\SOIL2\image_DXT.h" />
-    <ClInclude Include="SOIL2\SOIL2\image_helper.h" />
-    <ClInclude Include="SOIL2\SOIL2\jo_jpeg.h" />
-    <ClInclude Include="SOIL2\SOIL2\pkm_helper.h" />
-    <ClInclude Include="SOIL2\SOIL2\pvr_helper.h" />
-    <ClInclude Include="SOIL2\SOIL2\SOIL2.h" />
-    <ClInclude Include="SOIL2\SOIL2\stbi_DDS.h" />
-    <ClInclude Include="SOIL2\SOIL2\stbi_DDS_c.h" />
-    <ClInclude Include="SOIL2\SOIL2\stbi_ext.h" />
-    <ClInclude Include="SOIL2\SOIL2\stbi_ext_c.h" />
-    <ClInclude Include="SOIL2\SOIL2\stbi_pkm.h" />
-    <ClInclude Include="SOIL2\SOIL2\stbi_pkm_c.h" />
-    <ClInclude Include="SOIL2\SOIL2\stbi_pvr.h" />
-    <ClInclude Include="SOIL2\SOIL2\stbi_pvr_c.h" />
-    <ClInclude Include="SOIL2\SOIL2\stb_image.h" />
-    <ClInclude Include="SOIL2\SOIL2\stb_image_write.h" />
-    <ClInclude Include="SOIL2\SOIL2\wfETC.h" />
-    <ClInclude Include="Shader.h" />
+    <ClInclude Include="src\Shader.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="libraries\lib\glfw3.lib" />
@@ -633,6 +633,10 @@
     <Image Include="res\textures\background.png" />
     <Image Include="res\textures\cacodemon.png" />
     <Image Include="res\textures\cactus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="libraries\include\glad\CMakeLists.txt" />
+    <Text Include="src\CMakeLists.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

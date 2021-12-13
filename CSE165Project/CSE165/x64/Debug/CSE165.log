@@ -1,1 +1,17 @@
-﻿
+﻿  image_DXT.c
+  image_helper.c
+  SOIL2.c
+  wfETC.c
+  glad.c
+  Generating Code...
+  Game.cpp
+  GameObject.cpp
+  glm.cpp
+  Main.cpp
+C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\Main.cpp(75,25): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  Shader.cpp
+  Generating Code...
+glfw3.lib(context.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(context.obj)' or at 'C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\x64\Debug\glfw3.pdb'; linking object as if no debug info
+glfw3.lib(init.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(init.obj)' or at 'C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\x64\Debug\glfw3.pdb'; linking object as if no debug info
+glfw3.lib(win32_joystick.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(win32_joystick.obj)' or at 'C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\x64\Debug\glfw3.pdb'; linking object as if no debug info
+  CSE165.vcxproj -> C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\x64\Debug\CSE165.exe

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\CMakeFiles\8e88e71ef6917e8c43c0e09667d4c5c5\update_mappings.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\libraries\include\GLFW\src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\libraries\include\GLFW\src\mappings.h.in">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\libraries\include\GLFW\CMake\GenerateMappings.cmake" />
+    <None Include="C:\Users\megal\source\repos\CSE165_Project\CSE165Project\CSE165\libraries\include\GLFW\src\CMakeFiles\update_mappings" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{ECB4A24B-14DD-365E-8211-55F4284E3A56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{9BCDFA7D-76E6-3340-B3E8-E028C41464A6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

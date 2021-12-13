@@ -21,28 +21,28 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Shader.cpp">
+    <ClCompile Include="src\Shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
+    <ClCompile Include="src\Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="libraries\include\glm\detail\glm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SOIL2\SOIL2\image_DXT.c">
+    <ClCompile Include="src\GameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SOIL2\SOIL2\image_helper.c">
+    <ClCompile Include="libraries\include\SOIL2\image_DXT.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SOIL2\SOIL2\SOIL2.c">
+    <ClCompile Include="libraries\include\SOIL2\image_helper.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SOIL2\SOIL2\wfETC.c">
+    <ClCompile Include="libraries\include\SOIL2\SOIL2.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject.cpp">
+    <ClCompile Include="libraries\include\SOIL2\wfETC.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -59,10 +59,10 @@
     <ClInclude Include="libraries\include\glad\glad.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Shader.h">
+    <ClInclude Include="src\Shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
+    <ClInclude Include="src\Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="libraries\include\glm\common.hpp">
@@ -911,58 +911,58 @@
     <ClInclude Include="libraries\include\glm\simd\vector_relational.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SOIL2\SOIL2\stb_image.h">
+    <ClInclude Include="src\GameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SOIL2\SOIL2\image_DXT.h">
+    <ClInclude Include="libraries\include\SOIL2\image_DXT.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SOIL2\SOIL2\image_helper.h">
+    <ClInclude Include="libraries\include\SOIL2\image_helper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SOIL2\SOIL2\jo_jpeg.h">
+    <ClInclude Include="libraries\include\SOIL2\jo_jpeg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SOIL2\SOIL2\pkm_helper.h">
+    <ClInclude Include="libraries\include\SOIL2\pkm_helper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SOIL2\SOIL2\pvr_helper.h">
+    <ClInclude Include="libraries\include\SOIL2\pvr_helper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SOIL2\SOIL2\SOIL2.h">
+    <ClInclude Include="libraries\include\SOIL2\SOIL2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SOIL2\SOIL2\stb_image_write.h">
+    <ClInclude Include="libraries\include\SOIL2\stb_image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SOIL2\SOIL2\stbi_DDS.h">
+    <ClInclude Include="libraries\include\SOIL2\stb_image_write.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SOIL2\SOIL2\stbi_DDS_c.h">
+    <ClInclude Include="libraries\include\SOIL2\stbi_DDS.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SOIL2\SOIL2\stbi_ext.h">
+    <ClInclude Include="libraries\include\SOIL2\stbi_DDS_c.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SOIL2\SOIL2\stbi_ext_c.h">
+    <ClInclude Include="libraries\include\SOIL2\stbi_ext.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SOIL2\SOIL2\stbi_pkm.h">
+    <ClInclude Include="libraries\include\SOIL2\stbi_ext_c.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SOIL2\SOIL2\stbi_pkm_c.h">
+    <ClInclude Include="libraries\include\SOIL2\stbi_pkm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SOIL2\SOIL2\stbi_pvr.h">
+    <ClInclude Include="libraries\include\SOIL2\stbi_pkm_c.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SOIL2\SOIL2\stbi_pvr_c.h">
+    <ClInclude Include="libraries\include\SOIL2\stbi_pvr.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SOIL2\SOIL2\wfETC.h">
+    <ClInclude Include="libraries\include\SOIL2\stbi_pvr_c.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject.h">
+    <ClInclude Include="libraries\include\SOIL2\wfETC.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -1397,5 +1397,10 @@
     <Image Include="res\textures\background.png">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="src\CMakeLists.txt" />
+    <Text Include="libraries\include\glad\CMakeLists.txt" />
+    <Text Include="libraries\include\GLFW\CMakeLists.txt" />
   </ItemGroup>
 </Project>

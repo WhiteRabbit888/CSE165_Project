@@ -1,0 +1,3 @@
+C:/Users/megal/source/repos/CSE165_Project/CSE165Project/CSE165/build/CMakeFiles/DINO.dir
+C:/Users/megal/source/repos/CSE165_Project/CSE165Project/CSE165/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/megal/source/repos/CSE165_Project/CSE165Project/CSE165/build/CMakeFiles/ZERO_CHECK.dir

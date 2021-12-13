@@ -1,0 +1,13 @@
+C:/Users/megal/source/repos/CSE165_Project/CSE165Project/CSE165/CMakeFiles/DINO.dir
+C:/Users/megal/source/repos/CSE165_Project/CSE165Project/CSE165/CMakeFiles/ALL_BUILD.dir
+C:/Users/megal/source/repos/CSE165_Project/CSE165Project/CSE165/CMakeFiles/ZERO_CHECK.dir
+C:/Users/megal/source/repos/CSE165_Project/CSE165Project/CSE165/src/CMakeFiles/src1.dir
+C:/Users/megal/source/repos/CSE165_Project/CSE165Project/CSE165/src/CMakeFiles/src2.dir
+C:/Users/megal/source/repos/CSE165_Project/CSE165Project/CSE165/src/CMakeFiles/src3.dir
+C:/Users/megal/source/repos/CSE165_Project/CSE165Project/CSE165/libraries/include/glad/CMakeFiles/glad-generate-files.dir
+C:/Users/megal/source/repos/CSE165_Project/CSE165Project/CSE165/libraries/include/glad/CMakeFiles/glad.dir
+C:/Users/megal/source/repos/CSE165_Project/CSE165Project/CSE165/libraries/include/glad/CMakeFiles/ALL_BUILD.dir
+C:/Users/megal/source/repos/CSE165_Project/CSE165Project/CSE165/libraries/include/GLFW/CMakeFiles/ALL_BUILD.dir
+C:/Users/megal/source/repos/CSE165_Project/CSE165Project/CSE165/libraries/include/GLFW/src/CMakeFiles/update_mappings.dir
+C:/Users/megal/source/repos/CSE165_Project/CSE165Project/CSE165/libraries/include/GLFW/src/CMakeFiles/glfw.dir
+C:/Users/megal/source/repos/CSE165_Project/CSE165Project/CSE165/libraries/include/SOIL2/CMakeFiles/SOIL2.dir
